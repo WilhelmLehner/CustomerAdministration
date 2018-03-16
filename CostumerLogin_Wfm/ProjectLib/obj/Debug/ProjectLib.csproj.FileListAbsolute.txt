@@ -1,0 +1,11 @@
+E:\Benutzer\OwnCloud\FH\6_Semester\ASW6IL\Assignments\03\Application\ProjectLib\bin\Debug\ProjectLib.dll
+E:\Benutzer\OwnCloud\FH\6_Semester\ASW6IL\Assignments\03\Application\ProjectLib\bin\Debug\ProjectLib.pdb
+E:\Benutzer\OwnCloud\FH\6_Semester\ASW6IL\Assignments\03\Application\ProjectLib\obj\Debug\ProjectLib.dll
+E:\Benutzer\OwnCloud\FH\6_Semester\ASW6IL\Assignments\03\Application\ProjectLib\obj\Debug\ProjectLib.pdb
+E:\Benutzer\OwnCloud\FH\6_Semester\ASW6IL\Assignments\03\Application\ProjectLib\obj\Debug\ProjectLib.csprojResolveAssemblyReference.cache
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CostumerLogin_Wfm\CostumerLogin_Wfm\ProjectLib\bin\Debug\ProjectLib.dll
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CostumerLogin_Wfm\CostumerLogin_Wfm\ProjectLib\bin\Debug\ProjectLib.pdb
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CostumerLogin_Wfm\CostumerLogin_Wfm\ProjectLib\obj\Debug\ProjectLib.csprojResolveAssemblyReference.cache
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CostumerLogin_Wfm\CostumerLogin_Wfm\ProjectLib\obj\Debug\ProjectLib.csproj.CoreCompileInputs.cache
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CostumerLogin_Wfm\CostumerLogin_Wfm\ProjectLib\obj\Debug\ProjectLib.dll
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CostumerLogin_Wfm\CostumerLogin_Wfm\ProjectLib\obj\Debug\ProjectLib.pdb
