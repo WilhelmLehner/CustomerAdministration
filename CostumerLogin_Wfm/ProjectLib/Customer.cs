@@ -215,8 +215,15 @@ namespace ProjectLib
         /// <param name="newEmailAddress"></param>
         public void ChangeEmailAddress(string newEmailAddress)
         {
-            this.EmailAddress = newEmailAddress;
-            this.UpdateCSV();
+            if (newEmailAddress == this.EmailAddress)
+            {
+                throw new InvalidOperationException("The customer has already this email adress!!");
+            }
+            else
+            {
+                this.EmailAddress = newEmailAddress;
+                this.UpdateCSV();
+            }
         }
         #endregion
 
@@ -395,6 +402,26 @@ namespace ProjectLib
             else isValid = false;
 
             return isValid;
+        }
+
+        /// <summary>
+        /// Returns list of customer which include the given string either in the first or in the last name.
+        /// </summary>
+        /// <param name="includedString"></param>
+        /// <returns></returns>
+        public static List<Customer> ReturnListOfCustomerWhichIncludeStringInNames(string includedString)
+        {
+            List<Customer> liste = Customer.LoadListOfAllCustomers();
+
+            for (int i = 0; i < liste.Count; i++)
+            {
+                if (!liste[i].FirstName.Contains(includedString) && !liste[i].LastName.Contains(includedString))
+                {
+                    liste.RemoveAt(i);
+                }
+            }
+
+            return liste;
         }
         #endregion
 
