@@ -66,6 +66,9 @@ namespace ProjectLib
         #endregion
 
         #region Member attributes
+        /// <summary>
+        /// First name of customer
+        /// </summary>
         public string FirstName
         {
             get
@@ -84,6 +87,9 @@ namespace ProjectLib
             }
         }
 
+        /// <summary>
+        /// Last name of customer
+        /// </summary>
         public string LastName
         {
             get
@@ -103,6 +109,9 @@ namespace ProjectLib
 
         }
 
+        /// <summary>
+        /// Email adress of customer
+        /// </summary>
         public string EmailAddress
         {
             get
@@ -124,6 +133,9 @@ namespace ProjectLib
 
         }
 
+        /// <summary>
+        /// Customer number of customer
+        /// </summary>
         public int CustomerNumber
         {
             get
@@ -132,6 +144,9 @@ namespace ProjectLib
             }
         }
 
+        /// <summary>
+        /// Balance of customer
+        /// </summary>
         public double Balance
         {
             get
@@ -140,6 +155,9 @@ namespace ProjectLib
             }
         }
 
+        /// <summary>
+        /// Date of last change of the balance of customer
+        /// </summary>
         public DateTime DateLastChange
         {
             get
@@ -199,6 +217,40 @@ namespace ProjectLib
         {
             this.EmailAddress = newEmailAddress;
             this.UpdateCSV();
+        }
+        #endregion
+
+        #region private member methods
+        /// <summary>
+        /// The saving file is updated with object: either the attributes of the object are updated or if the object doesn't exist, it is added to the list
+        /// </summary>
+        private void UpdateCSV()
+        {
+            List<Customer> listCustomer = LoadListOfAllCustomers();
+            bool customerChanged = false;
+            int i = 0;
+
+            while (!customerChanged)
+            {
+                if (listCustomer.Count > 0 && listCustomer[i].customerNumber == this.customerNumber)
+                {
+                    listCustomer[i].FirstName = this.FirstName;
+                    listCustomer[i].LastName = this.LastName;
+                    listCustomer[i].emailAddress = this.EmailAddress;
+                    listCustomer[i].balance = this.Balance;
+                    listCustomer[i].dateLastChange = this.DateLastChange;
+                    customerChanged = true;
+                }
+
+                i++;
+
+                if (i >= listCustomer.Count && !customerChanged)
+                {
+                    listCustomer.Add(this);
+                    customerChanged = true;
+                }
+            }
+            WriteListeOfAllCustomersToCSV(listCustomer);
         }
         #endregion
 
@@ -347,38 +399,6 @@ namespace ProjectLib
         #endregion
 
         #region private static member methods
-        /// <summary>
-        /// The saving file is updated with object: either the attributes of the object are updated or if the object doesn't exist, it is added to the list
-        /// </summary>
-        private void UpdateCSV()
-        {
-            List<Customer> listCustomer = LoadListOfAllCustomers();
-            bool customerChanged = false;
-            int i = 0;
-
-            while (!customerChanged)
-            {
-                if (listCustomer.Count > 0 && listCustomer[i].customerNumber == this.customerNumber)
-                {
-                    listCustomer[i].FirstName = this.FirstName;
-                    listCustomer[i].LastName = this.LastName;
-                    listCustomer[i].emailAddress = this.EmailAddress;
-                    listCustomer[i].balance = this.Balance;
-                    listCustomer[i].dateLastChange = this.DateLastChange;
-                    customerChanged = true;
-                }
-
-                i++;
-
-                if (i >= listCustomer.Count && !customerChanged)
-                {
-                    listCustomer.Add(this);
-                    customerChanged = true;
-                }
-            }
-            WriteListeOfAllCustomersToCSV(listCustomer);
-        }
-
         /// <summary>
         /// Writes list of all customers to CSV file
         /// </summary>
