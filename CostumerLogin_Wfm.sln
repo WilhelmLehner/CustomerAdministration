@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectLib", "CostumerLogin_Wfm\ProjectLib\ProjectLib.csproj", "{0698BDFB-B54F-4C14-97BD-E382844D1C21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CostumerLogin_Wfm", "D:\6_Semester\ASW6\CostumerLogin_Wfm\CostumerLogin_Wfm\CostumerLogin_Wfm.csproj", "{BC84C182-962E-4F53-94F6-AFC07C4F5640}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CostumerLogin_Wfm", "CostumerLogin_Wfm\CostumerLogin_Wfm.csproj", "{BC84C182-962E-4F53-94F6-AFC07C4F5640}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

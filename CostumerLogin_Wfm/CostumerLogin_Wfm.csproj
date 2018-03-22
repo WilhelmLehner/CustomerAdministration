@@ -45,8 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BalanceBox.cs">
-      <SubType>Component</SubType>
+    <Compile Include="FrmPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPassword.Designer.cs">
+      <DependentUpon>FrmPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="SearchBox.cs">
       <SubType>Component</SubType>
@@ -67,6 +70,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAddEditCust.resx">
       <DependentUpon>FrmAddEditCust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPassword.resx">
+      <DependentUpon>FrmPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTop.resx">
       <DependentUpon>FrmTop.cs</DependentUpon>
@@ -95,7 +101,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="ProjectLib\ProjectLib.csproj">
+    <ProjectReference Include="C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\ProjectLib\ProjectLib.csproj">
       <Project>{0698bdfb-b54f-4c14-97bd-e382844d1c21}</Project>
       <Name>ProjectLib</Name>
     </ProjectReference>
