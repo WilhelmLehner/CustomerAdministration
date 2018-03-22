@@ -11,3 +11,6 @@ C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CostumerLogin_Wfm\CostumerLogin_
 C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CostumerLogin_Wfm\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.csproj.CoreCompileInputs.cache
 C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CostumerLogin_Wfm\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.exe
 C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CostumerLogin_Wfm\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.pdb
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\bin\Debug\CostumerLogin_Wfm.exe.config
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.exe
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.pdb
