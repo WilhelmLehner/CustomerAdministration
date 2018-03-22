@@ -413,16 +413,17 @@ namespace ProjectLib
         public static List<Customer> ReturnListOfCustomerWhichIncludeStringInNames(string includedString)
         {
             List<Customer> liste = Customer.LoadListOfAllCustomers();
+            List<Customer> output = new List<Customer>();
 
             for (int i = 0; i < liste.Count; i++)
             {
-                if (!liste[i].FirstName.Contains(includedString) && !liste[i].LastName.Contains(includedString))
+                if (liste[i].FirstName.Contains(includedString) || liste[i].LastName.Contains(includedString))
                 {
-                    liste.RemoveAt(i);
+                    output.Add(liste[i]);
                 }
             }
 
-            return liste;
+            return output; ;
         }
         #endregion
 

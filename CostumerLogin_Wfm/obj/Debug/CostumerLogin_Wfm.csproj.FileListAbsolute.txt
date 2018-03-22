@@ -28,3 +28,13 @@ D:\6_Semester\ASW6\CostumerLogin_Wfm\CostumerLogin_Wfm\obj\Debug\CostumerLogin_W
 C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\bin\Debug\CostumerLogin_Wfm.exe.config
 C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.exe
 C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.pdb
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\bin\Debug\CostumerLogin_Wfm.exe
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\bin\Debug\CostumerLogin_Wfm.pdb
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\bin\Debug\ProjectLib.dll
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\bin\Debug\ProjectLib.pdb
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.csprojResolveAssemblyReference.cache
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.FrmAddEditCust.resources
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.FrmPassword.resources
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.FrmTop.resources
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.Properties.Resources.resources
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.csproj.GenerateResource.Cache
