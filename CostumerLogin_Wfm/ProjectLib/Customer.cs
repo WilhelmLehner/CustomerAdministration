@@ -397,6 +397,7 @@ namespace ProjectLib
                     {
                         isValid = false;
                     }
+                    i++;
                 }
             }
             else isValid = false;
