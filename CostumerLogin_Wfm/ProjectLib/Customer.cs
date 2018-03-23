@@ -13,7 +13,7 @@ namespace ProjectLib
     public class Customer
     {
         #region static variables
-        private static string pathCSVFile = @"..\..\ListCustomer.csv";
+        private static string pathCSVFile = @"ListCustomer.csv";
         private static bool crypData = true;
         private static string passPhraseCryp = "!!THE NORTH REMEMBERS!!";
         #endregion
