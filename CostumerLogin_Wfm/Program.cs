@@ -16,7 +16,7 @@ namespace CostumerLogin_Wfm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmTop());
+            Application.Run(new FrmPassword());
         }
     }
 }

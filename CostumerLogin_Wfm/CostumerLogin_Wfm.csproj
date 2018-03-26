@@ -51,9 +51,6 @@
     <Compile Include="FrmPassword.Designer.cs">
       <DependentUpon>FrmPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="SearchBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="FrmAddEditCust.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,7 +98,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\ProjectLib\ProjectLib.csproj">
+    <ProjectReference Include="ProjectLib\ProjectLib.csproj">
       <Project>{0698bdfb-b54f-4c14-97bd-e382844d1c21}</Project>
       <Name>ProjectLib</Name>
     </ProjectReference>

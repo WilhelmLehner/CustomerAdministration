@@ -10,44 +10,51 @@ using System.Windows.Forms;
 
 namespace CostumerLogin_Wfm
 {
-    public partial class FrmPassword : Form
-    {
-        private string password = "12345";
 
+    public partial class FrmPassword : Form     //Password window for getting acces to the main programm and the containing data
+    {
+        #region static variables
+        private string password = "12345";
+        #endregion
+
+        #region Constructor
         public FrmPassword()
         {
             InitializeComponent();
         }
+        #endregion
 
-
-
-        private void btnLogin_Click(object sender, EventArgs e)
+        #region Private member methods
+        /// <summary>
+        /// Button for logging in, into the main window and working with the containing data 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnLogin_Click(object sender, EventArgs e)     //
         {
-            try
+            if (this.tbxPassword.Text == password)      //if the password is correct the window "FrmPassword" is getting closed and the main window "FrmTop" is opened
             {
-                if(this.tbxPassword.Text == password)
-                {
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                
-
-               
-
+                this.DialogResult = DialogResult.OK;
+                FrmTop dialog = new FrmTop();           
+                this.Visible = false;
+                dialog.ShowDialog();
+                this.Close();
             }
-
-            catch (ArgumentNullException ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Fehlermeldung", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                MessageBox.Show(ex.Message, "Fehlermeldung", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (ArgumentException ex)
-            {
-                MessageBox.Show(ex.Message, "Fehlermeldung", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Wrong password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        /// <summary>
+        /// Button "btnCancel" closes the whole programm and no access into the main window is provided
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCancel_Click(object sender, EventArgs e) //
+        {
+            this.Close();
+        }
+        #endregion 
     }
 }
