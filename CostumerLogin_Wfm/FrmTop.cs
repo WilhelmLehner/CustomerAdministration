@@ -96,16 +96,23 @@ namespace CostumerLogin_Wfm
         /// <param name="e"></param>
         private void btnEditCustomer_Click(object sender, EventArgs e)
         {
-            Customer currentSelectedCustomer =
-                Customer.GetCustomerWithNumber
-                (Int32.Parse(this.dgvListCustomer.SelectedRows[0].Cells[0].Value.ToString()));  
-
-
-            FrmAddEditCust dialog = new FrmAddEditCust(currentSelectedCustomer);    //Calling the subwindow "FrmAddEditCust" for editing customers 
-                                                                                    //transfers the current selected customer into the subwindow for editing the E-Mail and the last name 
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (this.dgvListCustomer.SelectedCells.Count != 0)
             {
-                UpdateDataList(currentSelectedCustomer);            //the list gets updated again to upload the edited customer in the data grid view.
+                Customer currentSelectedCustomer =
+                Customer.GetCustomerWithNumber
+                (Int32.Parse(this.dgvListCustomer.SelectedRows[0].Cells[0].Value.ToString()));
+
+
+                FrmAddEditCust dialog = new FrmAddEditCust(currentSelectedCustomer);    //Calling the subwindow "FrmAddEditCust" for editing customers 
+                                                                                        //transfers the current selected customer into the subwindow for editing the E-Mail and the last name 
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    UpdateDataList(currentSelectedCustomer);            //the list gets updated again to upload the edited customer in the data grid view.
+                }
+            }
+            else
+            {
+                MessageBox.Show("There is no customer selected, who can be changed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -115,7 +122,7 @@ namespace CostumerLogin_Wfm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnMoneyPayIn_Click(object sender, EventArgs e)                        
+        private void btnMoneyPayIn_Click(object sender, EventArgs e)
         {
             Customer currentSelectedCustomer =
               Customer.GetCustomerWithNumber
@@ -173,5 +180,19 @@ namespace CostumerLogin_Wfm
             this.gbxBalance.Location = new Point(this.Width - 185, this.gbxBalance.Location.Y);
         }
         #endregion
+
+        private void dgvListCustomer_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvListCustomer.SelectedCells.Count == 0)
+            {
+                gbxSearch.Enabled = false;
+                gbxBalance.Enabled = false;
+            }
+            else
+            {
+                gbxSearch.Enabled = true;
+                gbxBalance.Enabled = true;
+            }
+        }
     }
 }
