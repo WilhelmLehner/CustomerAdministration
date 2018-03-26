@@ -36,9 +36,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(147, 41);
+            this.btnCancel.Location = new System.Drawing.Point(81, 34);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(65, 26);
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -46,16 +47,19 @@
             // 
             // tbxPassword
             // 
-            this.tbxPassword.Location = new System.Drawing.Point(122, 13);
+            this.tbxPassword.Location = new System.Drawing.Point(69, 10);
+            this.tbxPassword.Margin = new System.Windows.Forms.Padding(2);
             this.tbxPassword.Name = "tbxPassword";
-            this.tbxPassword.Size = new System.Drawing.Size(100, 22);
+            this.tbxPassword.PasswordChar = '*';
+            this.tbxPassword.Size = new System.Drawing.Size(77, 20);
             this.tbxPassword.TabIndex = 1;
             // 
             // btnLogIn
             // 
-            this.btnLogIn.Location = new System.Drawing.Point(66, 41);
+            this.btnLogIn.Location = new System.Drawing.Point(11, 34);
+            this.btnLogIn.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Size = new System.Drawing.Size(75, 23);
+            this.btnLogIn.Size = new System.Drawing.Size(65, 26);
             this.btnLogIn.TabIndex = 2;
             this.btnLogIn.Text = "Login";
             this.btnLogIn.UseVisualStyleBackColor = true;
@@ -64,21 +68,27 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 16);
+            this.label1.Location = new System.Drawing.Point(9, 13);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 17);
+            this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Password:";
             // 
             // FrmPassword
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 93);
+            this.ClientSize = new System.Drawing.Size(154, 71);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogIn);
             this.Controls.Add(this.tbxPassword);
             this.Controls.Add(this.btnCancel);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(170, 110);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(170, 110);
             this.Name = "FrmPassword";
             this.Text = "Log In";
             this.ResumeLayout(false);
