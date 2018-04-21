@@ -11,8 +11,10 @@ using ProjectLib;
 
 namespace CostumerLogin_Wfm
 {
-
-    public partial class FrmTop : Form //Main window of the programm, contains information about the customer data and allows adding and editing of customers
+    /// <summary>
+    /// Main window of the programm, contains information about the customer data and allows adding and editing of customers
+    /// </summary>
+    public partial class FrmTop : Form //
     {
         #region Member variables
         private List<Customer> listCustomer = new List<Customer>();
@@ -61,9 +63,10 @@ namespace CostumerLogin_Wfm
             //Select the currently selected Customer
             for (int i = 0; i < this.dgvListCustomer.Rows.Count; i++)
             {
-                if (Int32.Parse(this.dgvListCustomer.Rows[i].Cells[0].Value.ToString()) == currentlySelectedCustomer.CustomerNumber)
+                //Comparing each customer number (number in first cell of every row) with the current selected customer number
+                if (Int32.Parse(this.dgvListCustomer.Rows[i].Cells[0].Value.ToString()) == currentlySelectedCustomer.CustomerNumber)    
                 {
-                    this.dgvListCustomer.Rows[i].Selected = true;
+                    this.dgvListCustomer.Rows[i].Selected = true; //selects the current customer
                     break;
                 }
             }
@@ -130,7 +133,7 @@ namespace CostumerLogin_Wfm
 
             currentSelectedCustomer.AddMoneyPaid(Convert.ToDouble(this.nudValue.Value));  //Using the function "AddMoneyPaid" from the class "Customer" for adding money into the balance of the current selected customer
                                                                                           //The amount is taken out of the numeric up and down box "nudValue" 
-            UpdateDataList(currentSelectedCustomer);                                                             //Updating of the list with the new balance value of the selected customer
+            UpdateDataList(currentSelectedCustomer);                                      //Updating of the list with the new balance value of the selected customer
         }
 
 
@@ -147,7 +150,7 @@ namespace CostumerLogin_Wfm
 
             currentSelectedCustomer.AddMoneyOwed(Convert.ToDouble(this.nudValue.Value)); //Using the function "AddMoneyOwed" from the class "Customer" for reducing money in the balance of the current selected customer. The amount is taken out of the numeric up and down box "nudValue" 
 
-            UpdateDataList(currentSelectedCustomer);                                                           //Updating of the list with the new balance value of the selected customer
+            UpdateDataList(currentSelectedCustomer);                                     //Updating of the list with the new balance value of the selected customer
 
         }
 
@@ -179,10 +182,16 @@ namespace CostumerLogin_Wfm
             this.gbxSearch.Location = new Point(this.Width - 185, this.gbxSearch.Location.Y);
             this.gbxBalance.Location = new Point(this.Width - 185, this.gbxBalance.Location.Y);
         }
-        #endregion
-
+       
+        /// <summary>
+        /// Enables the group boxes "gbxSearch" and "gbxBalance" if there is no customer in the list. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvListCustomer_SelectionChanged(object sender, EventArgs e)
         {
+            //Enabling the group boxes only if a customer is existing in the list. 
+            //Otherwise exception is thrown if balance is changed or a customer is searched, as no customer can be found. 
             if (dgvListCustomer.SelectedCells.Count == 0)
             {
                 gbxSearch.Enabled = false;
@@ -194,5 +203,6 @@ namespace CostumerLogin_Wfm
                 gbxBalance.Enabled = true;
             }
         }
+        #endregion
     }
 }

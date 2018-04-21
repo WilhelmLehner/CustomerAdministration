@@ -10,8 +10,10 @@ using System.Windows.Forms;
 
 namespace CostumerLogin_Wfm
 {
-
-    public partial class FrmPassword : Form     //Password window for getting acces to the main programm and the containing data
+    /// <summary>
+    /// Password window for getting acces to the main programm and the containing data
+    /// </summary>
+    public partial class FrmPassword : Form    
     {
         #region static variables
         private string password = "12345";
