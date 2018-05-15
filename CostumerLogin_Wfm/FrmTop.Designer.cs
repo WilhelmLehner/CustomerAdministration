@@ -62,7 +62,6 @@
             this.gbxSearch.BackColor = System.Drawing.SystemColors.Control;
             this.gbxSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.gbxSearch.Controls.Add(this.tbxEntry);
-            this.gbxSearch.Enabled = false;
             this.gbxSearch.Location = new System.Drawing.Point(715, 84);
             this.gbxSearch.Margin = new System.Windows.Forms.Padding(2);
             this.gbxSearch.Name = "gbxSearch";

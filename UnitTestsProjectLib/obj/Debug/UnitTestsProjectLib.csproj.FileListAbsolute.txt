@@ -1,0 +1,8 @@
+C:\Users\anzij\Source\Repos\CustomerAdministration\UnitTestsProjectLib\bin\Debug\UnitTestsProjectLib.exe.config
+C:\Users\anzij\Source\Repos\CustomerAdministration\UnitTestsProjectLib\obj\Debug\UnitTestsProjectLib.csprojResolveAssemblyReference.cache
+C:\Users\anzij\Source\Repos\CustomerAdministration\UnitTestsProjectLib\bin\Debug\UnitTestsProjectLib.exe
+C:\Users\anzij\Source\Repos\CustomerAdministration\UnitTestsProjectLib\bin\Debug\UnitTestsProjectLib.pdb
+C:\Users\anzij\Source\Repos\CustomerAdministration\UnitTestsProjectLib\bin\Debug\ProjectLib.dll
+C:\Users\anzij\Source\Repos\CustomerAdministration\UnitTestsProjectLib\bin\Debug\ProjectLib.pdb
+C:\Users\anzij\Source\Repos\CustomerAdministration\UnitTestsProjectLib\obj\Debug\UnitTestsProjectLib.exe
+C:\Users\anzij\Source\Repos\CustomerAdministration\UnitTestsProjectLib\obj\Debug\UnitTestsProjectLib.pdb

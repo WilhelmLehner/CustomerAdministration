@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectLib;
+using System.IO;
 
 namespace CostumerLogin_Wfm
 {
@@ -26,7 +27,6 @@ namespace CostumerLogin_Wfm
         {
             InitializeComponent();
             UpdateDataList();      //Updating the data grid view in the forms for illustrating all existing customers.
-    
         }
         #endregion
 
@@ -38,15 +38,44 @@ namespace CostumerLogin_Wfm
         {
             //Clear display
             dgvListCustomer.Rows.Clear();
-
-            //Update liste
-            if (String.IsNullOrWhiteSpace(tbxEntry.Text)) this.listCustomer = Customer.LoadListOfAllCustomers();
-            else this.listCustomer = Customer.ReturnListOfCustomerWhichIncludeStringInNames(tbxEntry.Text);
-
-            //Update display
-            foreach (Customer element in this.listCustomer)
+            try
             {
-                dgvListCustomer.Rows.Add(element.CustomerNumber, element.FirstName, element.LastName, element.EmailAddress, string.Format("{0:0.00}", element.Balance), element.DateLastChange.ToShortDateString());
+                if (String.IsNullOrWhiteSpace(tbxEntry.Text))
+                {
+                    //Update liste
+                    this.listCustomer = Customer.LoadListOfAllCustomers();
+                }
+                else this.listCustomer = Customer.ReturnListOfCustomerWhichIncludeStringInNames(tbxEntry.Text);
+
+                //Update display
+                foreach (Customer element in this.listCustomer)
+                {
+                    dgvListCustomer.Rows.Add(element.CustomerNumber, element.FirstName, element.LastName, element.EmailAddress, string.Format("{0:0.00}", element.Balance), element.DateLastChange.ToShortDateString());
+                }
+            }
+            catch (IOException)
+            {
+                DialogResult dialog = MessageBox.Show("Data File is damaged. Press OK to create a new one. Press Abort to close the application", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                if(dialog == DialogResult.OK)
+                {
+                    Customer.CreateNewLogFile();
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
+            catch (System.Security.Cryptography.CryptographicException)
+            {
+                DialogResult dialog = MessageBox.Show("Data File is damaged. Press OK to create a new one. Press Abort to close the application", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                if (dialog == DialogResult.OK)
+                {
+                    Customer.CreateNewLogFile();
+                }
+                else
+                {
+                    Application.Exit();
+                }
             }
         }
 
@@ -88,7 +117,6 @@ namespace CostumerLogin_Wfm
             }
         }
 
-
         /// <summary>
         /// Button to get the data from the current selected customer in the data grid view and writes it on the variable "currentSelectedCustomer"
         /// </summary>
@@ -98,16 +126,23 @@ namespace CostumerLogin_Wfm
         {
             if (this.dgvListCustomer.SelectedCells.Count != 0)
             {
-                Customer currentSelectedCustomer =
-                Customer.GetCustomerWithNumber
-                (Int32.Parse(this.dgvListCustomer.SelectedRows[0].Cells[0].Value.ToString()));
-
-
-                FrmAddEditCust dialog = new FrmAddEditCust(currentSelectedCustomer);    //Calling the subwindow "FrmAddEditCust" for editing customers 
-                                                                                        //transfers the current selected customer into the subwindow for editing the E-Mail and the last name 
-                if (dialog.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    UpdateDataList(currentSelectedCustomer);            //the list gets updated again to upload the edited customer in the data grid view.
+                    Customer currentSelectedCustomer = Customer.GetCustomerWithNumber(Int32.Parse(this.dgvListCustomer.SelectedRows[0].Cells[0].Value.ToString()));
+                    FrmAddEditCust dialog = new FrmAddEditCust(currentSelectedCustomer);    //Calling the subwindow "FrmAddEditCust" for editing customers 
+                                                                                            //transfers the current selected customer into the subwindow for editing the E-Mail and the last name 
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+                        UpdateDataList(currentSelectedCustomer);            //the list gets updated again to upload the edited customer in the data grid view.
+                    }
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (System.Security.Cryptography.CryptographicException ex)
+                {
+                    MessageBox.Show("Error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -115,7 +150,6 @@ namespace CostumerLogin_Wfm
                 MessageBox.Show("There is no customer selected, who can be changed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         /// <summary>
         /// Button "btnMonayPayIn" adds money to the balance of the selected customer
@@ -132,7 +166,6 @@ namespace CostumerLogin_Wfm
                                                                                           //The amount is taken out of the numeric up and down box "nudValue" 
             UpdateDataList(currentSelectedCustomer);                                                             //Updating of the list with the new balance value of the selected customer
         }
-
 
         /// <summary>
         /// Button "btnMonayPayOut" reduces money in the balance of the selected customer
@@ -185,12 +218,10 @@ namespace CostumerLogin_Wfm
         {
             if (dgvListCustomer.SelectedCells.Count == 0)
             {
-                gbxSearch.Enabled = false;
                 gbxBalance.Enabled = false;
             }
             else
             {
-                gbxSearch.Enabled = true;
                 gbxBalance.Enabled = true;
             }
         }

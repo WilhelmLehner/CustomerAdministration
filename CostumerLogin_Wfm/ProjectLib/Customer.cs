@@ -12,10 +12,10 @@ namespace ProjectLib
     /// </summary>
     public class Customer
     {
-        #region static variables
-        private static string pathCSVFile = @"ListCustomer.csv";
-        private static bool crypData = true;
-        private static string passPhraseCryp = "!!THE NORTH REMEMBERS!!";
+        #region Constants
+        private const string PATHcSVfILE = @"ListCustomer.csv";
+        private const bool CRYPdATA = true;
+        private const string PASSpHRASEcRYP = "!!THE NORTH REMEMBERS!!";
         #endregion
 
         #region Member variables
@@ -42,7 +42,7 @@ namespace ProjectLib
             this.customerNumber = GetUniqueCustomerNumber();
             this.balance = 0.0;
             this.dateLastChange = DateTime.Now;
-            this.UpdateCSV();
+            this.UpdateCSV(); //the new Customer is immidiatelly saved in the CSV file
         }
 
         /// <summary>
@@ -56,6 +56,7 @@ namespace ProjectLib
         /// <param name="dateLastChange"></param>
         private Customer(int customerNumber, string firstName, string lastName, string emailAddress, double balance, DateTime dateLastChange)
         {
+            //the new Customer is NOT saved in the CSV file; this Constructor is just for internal use
             this.firstName = firstName;
             this.lastName = lastName;
             this.emailAddress = emailAddress;
@@ -77,13 +78,11 @@ namespace ProjectLib
             }
             private set
             {
-                if (IsNameValid(value))
+                if (IsNameValid(value)) //is check is no requirment but it is done to ensure realistic inputs
                 {
-                    if (value.Length >= 2) this.firstName = value;
-                    else throw new ArgumentOutOfRangeException("The first name must have at least 2 letters");
-
+                    this.firstName = value;
                 }
-                else throw new ArgumentNullException("It is no null value for first name allowed");
+                else throw new ArgumentOutOfRangeException(value, "For the first name only letters are allowed and it must include at least 2 letters");
             }
         }
 
@@ -98,15 +97,12 @@ namespace ProjectLib
             }
             private set
             {
-                if (IsNameValid(value))
+                if (IsNameValid(value))//is check is no requirment but it is done to ensure realistic inputs
                 {
-                    if (value.Length >= 2) this.lastName = value;
-                    else throw new ArgumentOutOfRangeException("The last name must have at least 2 letters");
-
+                    this.lastName = value;
                 }
-                else throw new ArgumentNullException("It is no null value for last name allowed");
+                else throw new ArgumentOutOfRangeException(value, "For the last name only letters are allowed and it must include at least 2 letters");
             }
-
         }
 
         /// <summary>
@@ -120,17 +116,16 @@ namespace ProjectLib
             }
             private set
             {
-                if (IsEmailAddressValid(value) && IsEmailAddressUnique(value))
+                if (IsEmailAddressValid(value))
                 {
-                    if (IsEmailAddressValid(value))
+                    if (IsEmailAddressUnique(value))
                     {
                         this.emailAddress = value;
                     }
-                    else throw new ArgumentException(value, "The entered email address is already taken!");
+                    else throw new ArgumentException("The entered email address is already taken!");
                 }
                 else throw new ArgumentOutOfRangeException(value, "The entered email address is not valid!");
             }
-
         }
 
         /// <summary>
@@ -272,26 +267,23 @@ namespace ProjectLib
             string[] lineParts;
             string line;
 
-            StreamReader reader = new StreamReader(pathCSVFile, Encoding.UTF8);
+            StreamReader reader = new StreamReader(PATHcSVfILE, Encoding.UTF8);
             while (!reader.EndOfStream)
             {
                 line = reader.ReadLine();
                 if (!string.IsNullOrWhiteSpace(line))
                 {
                     lineParts = line.Split(';');
-                    if (crypData)
+                    if (CRYPdATA)
                     {
-                        listCustomer.Add(new Customer(Int32.Parse(Encrypt.DecryptString(lineParts[0], passPhraseCryp)), Encrypt.DecryptString(lineParts[1], passPhraseCryp), Encrypt.DecryptString(lineParts[2], passPhraseCryp), Encrypt.DecryptString(lineParts[3], passPhraseCryp), Double.Parse(Encrypt.DecryptString(lineParts[4], passPhraseCryp)), DateTime.Parse(Encrypt.DecryptString(lineParts[5], passPhraseCryp))));
+                        listCustomer.Add(new Customer(Int32.Parse(Encrypt.DecryptString(lineParts[0], PASSpHRASEcRYP)), Encrypt.DecryptString(lineParts[1], PASSpHRASEcRYP), Encrypt.DecryptString(lineParts[2], PASSpHRASEcRYP), Encrypt.DecryptString(lineParts[3], PASSpHRASEcRYP), Double.Parse(Encrypt.DecryptString(lineParts[4], PASSpHRASEcRYP)), DateTime.Parse(Encrypt.DecryptString(lineParts[5], PASSpHRASEcRYP))));
                     }
                     else
                     {
                         listCustomer.Add(new Customer(Int32.Parse(lineParts[0]), lineParts[1], lineParts[2], lineParts[3], Double.Parse(lineParts[4]), DateTime.Parse(lineParts[5])));
                     }
-
-                    
                 }
             }
-
             reader.Close();
             return listCustomer;
         }
@@ -425,6 +417,15 @@ namespace ProjectLib
 
             return output; ;
         }
+
+        /// <summary>
+        /// Creats a new LogFile and overwrites the old one
+        /// </summary>
+        public static void CreateNewLogFile()
+        {
+            FileStream stream = File.Create(PATHcSVfILE);
+            stream.Close();
+        }
         #endregion
 
         #region private static member methods
@@ -434,14 +435,14 @@ namespace ProjectLib
         /// <param name="listAllCustomers"></param>
         private static void WriteListeOfAllCustomersToCSV(List<Customer> listAllCustomers)
         {
-            StreamWriter writer = new StreamWriter(pathCSVFile);
+            StreamWriter writer = new StreamWriter(PATHcSVfILE);
             string line;
             foreach (Customer element in listAllCustomers)
             {
-                if (crypData)
+                if (CRYPdATA)
                 {
-                    line = string.Format("{0};{1};{2};{3};{4};{5}", Encrypt.EncryptString(element.CustomerNumber.ToString(), passPhraseCryp), Encrypt.EncryptString(element.FirstName, passPhraseCryp), Encrypt.EncryptString(element.LastName, passPhraseCryp),
-                        Encrypt.EncryptString(element.EmailAddress, passPhraseCryp), Encrypt.EncryptString(element.Balance.ToString(), passPhraseCryp), Encrypt.EncryptString(element.DateLastChange.ToShortDateString(), passPhraseCryp));
+                    line = string.Format("{0};{1};{2};{3};{4};{5}", Encrypt.EncryptString(element.CustomerNumber.ToString(), PASSpHRASEcRYP), Encrypt.EncryptString(element.FirstName, PASSpHRASEcRYP), Encrypt.EncryptString(element.LastName, PASSpHRASEcRYP),
+                        Encrypt.EncryptString(element.EmailAddress, PASSpHRASEcRYP), Encrypt.EncryptString(element.Balance.ToString(), PASSpHRASEcRYP), Encrypt.EncryptString(element.DateLastChange.ToShortDateString(), PASSpHRASEcRYP));
                 }
                 else
                 {
