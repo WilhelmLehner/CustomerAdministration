@@ -14,7 +14,7 @@ namespace ProjectLib
     {
         #region Constants
         private const string PATHcSVfILE = @"ListCustomer.csv";
-        private const bool CRYPdATA = true;
+        private static bool crypData = true;
         private const string PASSpHRASEcRYP = "!!THE NORTH REMEMBERS!!";
         #endregion
 
@@ -274,9 +274,17 @@ namespace ProjectLib
                 if (!string.IsNullOrWhiteSpace(line))
                 {
                     lineParts = line.Split(';');
-                    if (CRYPdATA)
+                    if (crypData)
                     {
-                        listCustomer.Add(new Customer(Int32.Parse(Encrypt.DecryptString(lineParts[0], PASSpHRASEcRYP)), Encrypt.DecryptString(lineParts[1], PASSpHRASEcRYP), Encrypt.DecryptString(lineParts[2], PASSpHRASEcRYP), Encrypt.DecryptString(lineParts[3], PASSpHRASEcRYP), Double.Parse(Encrypt.DecryptString(lineParts[4], PASSpHRASEcRYP)), DateTime.Parse(Encrypt.DecryptString(lineParts[5], PASSpHRASEcRYP))));
+                        try
+                        {
+                            listCustomer.Add(new Customer(Int32.Parse(Encrypt.DecryptString(lineParts[0], PASSpHRASEcRYP)), Encrypt.DecryptString(lineParts[1], PASSpHRASEcRYP), Encrypt.DecryptString(lineParts[2], PASSpHRASEcRYP), Encrypt.DecryptString(lineParts[3], PASSpHRASEcRYP), Double.Parse(Encrypt.DecryptString(lineParts[4], PASSpHRASEcRYP)), DateTime.Parse(Encrypt.DecryptString(lineParts[5], PASSpHRASEcRYP))));
+                        }
+                        catch (Exception)
+                        {
+                            reader.Close();
+                            throw new System.Security.Cryptography.CryptographicException("Decrypting file failed");
+                        }
                     }
                     else
                     {
@@ -423,6 +431,7 @@ namespace ProjectLib
         /// </summary>
         public static void CreateNewLogFile()
         {
+            //File.Delete(PATHcSVfILE);
             FileStream stream = File.Create(PATHcSVfILE);
             stream.Close();
         }
@@ -439,7 +448,7 @@ namespace ProjectLib
             string line;
             foreach (Customer element in listAllCustomers)
             {
-                if (CRYPdATA)
+                if (crypData)
                 {
                     line = string.Format("{0};{1};{2};{3};{4};{5}", Encrypt.EncryptString(element.CustomerNumber.ToString(), PASSpHRASEcRYP), Encrypt.EncryptString(element.FirstName, PASSpHRASEcRYP), Encrypt.EncryptString(element.LastName, PASSpHRASEcRYP),
                         Encrypt.EncryptString(element.EmailAddress, PASSpHRASEcRYP), Encrypt.EncryptString(element.Balance.ToString(), PASSpHRASEcRYP), Encrypt.EncryptString(element.DateLastChange.ToShortDateString(), PASSpHRASEcRYP));

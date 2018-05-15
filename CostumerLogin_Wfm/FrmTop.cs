@@ -57,7 +57,7 @@ namespace CostumerLogin_Wfm
             }
             catch (IOException)
             {
-                DialogResult dialog = MessageBox.Show("Data File is damaged. Press OK to create a new one. Press Abort to close the application", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                DialogResult dialog = MessageBox.Show("Data File missing Press OK to create a new one. Press Abort to close the application", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                 if(dialog == DialogResult.OK)
                 {
                     Customer.CreateNewLogFile();
