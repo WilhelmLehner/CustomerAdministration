@@ -11,7 +11,10 @@ using ProjectLib;
 
 namespace CostumerLogin_Wfm
 {
-    public partial class FrmAddEditCust : Form      //Subwindow of the main application. Provides the possibility of adding or editing customers. 
+    /// <summary>
+    /// Subwindow of the main application. Provides the possibility of adding or editing customers. 
+    /// </summary>
+    public partial class FrmAddEditCust : Form      
     {
         #region static variables
         private Customer aCustomer;
@@ -61,7 +64,7 @@ namespace CostumerLogin_Wfm
         }
         #endregion
 
-        #region Private memmber methods
+        #region Private event methods
         /// <summary>
         /// Button for adding or editing a customer
         /// </summary>

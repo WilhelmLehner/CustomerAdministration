@@ -38,3 +38,17 @@ C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Debug\C
 C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.FrmTop.resources
 C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.Properties.Resources.resources
 C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.csproj.GenerateResource.Cache
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\bin\Debug\CostumerLogin_Wfm.exe.config
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\bin\Debug\CostumerLogin_Wfm.exe
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\bin\Debug\CostumerLogin_Wfm.pdb
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\bin\Debug\ProjectLib.dll
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\bin\Debug\ProjectLib.pdb
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.csprojResolveAssemblyReference.cache
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.FrmAddEditCust.resources
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.FrmPassword.resources
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.FrmTop.resources
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.Properties.Resources.resources
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.csproj.GenerateResource.Cache
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.csproj.CoreCompileInputs.cache
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.exe
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\obj\Debug\CostumerLogin_Wfm.pdb

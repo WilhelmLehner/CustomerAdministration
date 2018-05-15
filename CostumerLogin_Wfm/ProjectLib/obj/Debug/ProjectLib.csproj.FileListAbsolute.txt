@@ -14,3 +14,9 @@ C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\ProjectLib\
 C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\ProjectLib\obj\Debug\ProjectLib.csprojResolveAssemblyReference.cache
 C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\ProjectLib\obj\Debug\ProjectLib.dll
 C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\ProjectLib\obj\Debug\ProjectLib.pdb
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\ProjectLib\bin\Debug\ProjectLib.dll
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\ProjectLib\bin\Debug\ProjectLib.pdb
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\ProjectLib\obj\Debug\ProjectLib.csprojResolveAssemblyReference.cache
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\ProjectLib\obj\Debug\ProjectLib.csproj.CoreCompileInputs.cache
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\ProjectLib\obj\Debug\ProjectLib.dll
+C:\Users\wilhe\Documents\FH\SEM6\AWS6\Programme\CustomerAdministration_Version1\CostumerLogin_Wfm\ProjectLib\obj\Debug\ProjectLib.pdb
