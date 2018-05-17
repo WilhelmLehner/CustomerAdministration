@@ -13,12 +13,15 @@ namespace ProjectLib
     /// </summary>
     public static class Encrypt
     {
+        #region Constants
         // This size of the IV (in bytes) must = (keysize / 8).  Default keysize is 256, so the IV must be
         // 32 bytes long.  Using a 16 character string here gives us 32 bytes when converted to a byte array.
-        private const string initVector = "pemgail9uzpgzl88";
+        private const string INITvECTOR = "pemgail9uzpgzl88";
         // This constant is used to determine the keysize of the encryption algorithm
-        private const int keysize = 256;
+        private const int KEYSIZE = 256;
+        #endregion
 
+        #region static Methods
         /// <summary>
         /// Encrypts plaintext by the given reference of the passPhrase.
         /// </summary>
@@ -27,10 +30,10 @@ namespace ProjectLib
         /// <returns>encrypted string</returns>
         public static string EncryptString(string plainText, string passPhrase)
         {
-            byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
+            byte[] initVectorBytes = Encoding.UTF8.GetBytes(INITvECTOR);
             byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
             PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null);
-            byte[] keyBytes = password.GetBytes(keysize / 8);
+            byte[] keyBytes = password.GetBytes(KEYSIZE / 8);
             RijndaelManaged symmetricKey = new RijndaelManaged();
             symmetricKey.Mode = CipherMode.CBC;
             ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes);
@@ -52,10 +55,10 @@ namespace ProjectLib
         /// <returns></returns>
         public static string DecryptString(string cipherText, string passPhrase)
         {
-            byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
+            byte[] initVectorBytes = Encoding.UTF8.GetBytes(INITvECTOR);
             byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
             PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null);
-            byte[] keyBytes = password.GetBytes(keysize / 8);
+            byte[] keyBytes = password.GetBytes(KEYSIZE / 8);
             RijndaelManaged symmetricKey = new RijndaelManaged();
             symmetricKey.Mode = CipherMode.CBC;
             ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes);
@@ -67,5 +70,6 @@ namespace ProjectLib
             cryptoStream.Close();
             return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
         }
+        #endregion
     }
 }

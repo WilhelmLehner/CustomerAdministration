@@ -1,0 +1,5 @@
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\ProjectLib\bin\Release\ProjectLib.dll
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\ProjectLib\bin\Release\ProjectLib.pdb
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\ProjectLib\obj\Release\ProjectLib.csprojResolveAssemblyReference.cache
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\ProjectLib\obj\Release\ProjectLib.dll
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\ProjectLib\obj\Release\ProjectLib.pdb
