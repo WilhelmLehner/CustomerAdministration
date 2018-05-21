@@ -51,7 +51,7 @@ namespace ProjectLib
         /// Decrypts plaintext by the given reference of the passPhrase.
         /// </summary>
         /// <param name="cipherText">Encrypted text</param>
-        /// <param name="passPhrase">This string must be the same as the passPhrase which was used for encrypting</param>
+        /// <param name="passPhrase">This string must be the equal to the passPhrase which was used for encrypting</param>
         /// <returns></returns>
         public static string DecryptString(string cipherText, string passPhrase)
         {

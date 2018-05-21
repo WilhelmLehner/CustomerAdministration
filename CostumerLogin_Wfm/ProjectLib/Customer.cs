@@ -12,7 +12,7 @@ namespace ProjectLib
     /// </summary>
     public class Customer
     {
-        #region Constants
+        #region Constants and static veriables
         private const string PATHcSVfILE = @"ListCustomer.csv";
         private static bool crypData = true;
         private const string PASSpHRASEcRYP = "!!THE NORTH REMEMBERS!!";
@@ -169,7 +169,7 @@ namespace ProjectLib
         /// <returns></returns>
         public override string ToString()
         {
-            return string.Format("{0} {1}, {2}, balance [EUR]: {3:0.00}, last change on: {4}", this.LastName, this.FirstName, this.EmailAddress, this.Balance, this.DateLastChange.ToShortDateString());
+            return string.Format("{0} {1} ({5}), {2}, balance [EUR]: {3:0.00}, last change on: {4}", this.LastName, this.FirstName, this.EmailAddress, this.Balance, this.DateLastChange.ToShortDateString(), this.CustomerNumber);
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace ProjectLib
 
             while (!customerChanged)
             {
-                if (listCustomer.Count > 0 && listCustomer[i].customerNumber == this.customerNumber)
+                if (listCustomer.Count > 0 && listCustomer[i].customerNumber == this.customerNumber) //customers who are in the list
                 {
                     listCustomer[i].FirstName = this.FirstName;
                     listCustomer[i].LastName = this.LastName;
@@ -246,7 +246,7 @@ namespace ProjectLib
 
                 i++;
 
-                if (i >= listCustomer.Count && !customerChanged)
+                if (i >= listCustomer.Count && !customerChanged) //for customers who are not in the list
                 {
                     listCustomer.Add(this);
                     customerChanged = true;
@@ -274,21 +274,21 @@ namespace ProjectLib
                 if (!string.IsNullOrWhiteSpace(line))
                 {
                     lineParts = line.Split(';');
-                    if (crypData)
+                    try
                     {
-                        try
+                        if (crypData)
                         {
                             listCustomer.Add(new Customer(Int32.Parse(Encrypt.DecryptString(lineParts[0], PASSpHRASEcRYP)), Encrypt.DecryptString(lineParts[1], PASSpHRASEcRYP), Encrypt.DecryptString(lineParts[2], PASSpHRASEcRYP), Encrypt.DecryptString(lineParts[3], PASSpHRASEcRYP), Double.Parse(Encrypt.DecryptString(lineParts[4], PASSpHRASEcRYP)), DateTime.Parse(Encrypt.DecryptString(lineParts[5], PASSpHRASEcRYP))));
                         }
-                        catch (Exception)
+                        else
                         {
-                            reader.Close();
-                            throw new System.Security.Cryptography.CryptographicException("Decrypting file failed");
+                            listCustomer.Add(new Customer(Int32.Parse(lineParts[0]), lineParts[1], lineParts[2], lineParts[3], Double.Parse(lineParts[4]), DateTime.Parse(lineParts[5])));
                         }
                     }
-                    else
+                    catch (Exception)
                     {
-                        listCustomer.Add(new Customer(Int32.Parse(lineParts[0]), lineParts[1], lineParts[2], lineParts[3], Double.Parse(lineParts[4]), DateTime.Parse(lineParts[5])));
+                        reader.Close();
+                        throw new System.Security.Cryptography.CryptographicException("Decrypting file failed");
                     }
                 }
             }
@@ -333,10 +333,10 @@ namespace ProjectLib
                 if (addressparts.Length == 2)
                 {
                     string[] partsAfter = addressparts[1].Split('.');
-                    if (partsAfter.Length >= 2)
+                    if (partsAfter.Length >= 2) //at least one dot after "@"
                     {
                         string afterFinalDot = partsAfter[partsAfter.Length - 1];
-                        if (afterFinalDot.Length > 1 && afterFinalDot.Length < 5)
+                        if (afterFinalDot.Length > 1 && afterFinalDot.Length < 5) //check of ending after final dot
                         {
                             for (int i = 0; i < afterFinalDot.Length; i++)
                             {
@@ -352,13 +352,13 @@ namespace ProjectLib
 
                             if (areOnlyLetters && addressparts[0].Length > 0)
                             {
-                                if (addressparts[0][0] != '.' && addressparts[0][addressparts[0].Length - 1] != '.' && addressparts[1][0] != '.')
+                                if (addressparts[0][0] != '.' && addressparts[0][addressparts[0].Length - 1] != '.' && addressparts[1][0] != '.') //no dot at first or next to @
                                 {
                                     for (int i = 0; i < emailAddress.Length; i++)
                                     {
                                         if (!Char.IsLetterOrDigit(emailAddress[i]))
                                         {
-                                            if (allowedSymbols.IndexOf(emailAddress[i]) == -1)
+                                            if (allowedSymbols.IndexOf(emailAddress[i]) == -1)//wenn es nicht zu den erlaubten zeichen gehört
                                             {
                                                 break;
                                             }
@@ -385,15 +385,16 @@ namespace ProjectLib
         /// <returns></returns>
         public static bool IsNameValid(string name)
         {
+            //there are no requirements regarding name validation. It was made to ensure an meaningful entry of names
             bool isValid = true;
 
-            if (!String.IsNullOrWhiteSpace(name) && name.Length > 1)
+            if (!String.IsNullOrWhiteSpace(name) && name.Length > 1) //length of name at least 2 signs
             {
                 int i = 0;
 
                 while (i < name.Length && isValid)
                 {
-                    if (!Char.IsLetter(name[i]))
+                    if (!Char.IsLetter(name[i])) //only letters are allowed in names
                     {
                         isValid = false;
                     }
@@ -475,7 +476,7 @@ namespace ProjectLib
             {
                 number = 100000;
             }
-            else
+            else //hence the customers cannot be deleted the length of the list is related to the customer number
             {
                 number = listCustomer[listCustomer.Count - 1].CustomerNumber + 1;
             }
@@ -493,7 +494,7 @@ namespace ProjectLib
             List<Customer> listCustomer = LoadListOfAllCustomers();
             foreach (Customer element in listCustomer)
             {
-                if (element.EmailAddress == emailAddress)
+                if (string.Compare(element.EmailAddress, emailAddress) == 0)
                 {
                     isUnique = false;
                     break;

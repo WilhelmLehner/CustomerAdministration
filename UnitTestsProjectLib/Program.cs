@@ -27,11 +27,15 @@ namespace UnitTestsProjectLib
             #endregion
 
             #region Tests Customer class
+            Console.WriteLine("\n\n\nCUSTOMER CLASS:");
+
             UnitTestCustomer.FileMissingTest();
 
             UnitTestCustomer.CreateDataTest();
 
-            UnitTestCustomer.MethodsTest();
+            UnitTestCustomer.MemberMethodsTest();
+
+            UnitTestCustomer.StaticMethodsTest();
             #endregion
 
             Console.ReadLine();
