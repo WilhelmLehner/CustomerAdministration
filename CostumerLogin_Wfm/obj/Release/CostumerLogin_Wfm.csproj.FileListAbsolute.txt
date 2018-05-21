@@ -1,0 +1,13 @@
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\bin\Release\CostumerLogin_Wfm.exe.config
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\bin\Release\CostumerLogin_Wfm.exe
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\bin\Release\CostumerLogin_Wfm.pdb
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\bin\Release\ProjectLib.dll
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\bin\Release\ProjectLib.pdb
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Release\CostumerLogin_Wfm.csprojResolveAssemblyReference.cache
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Release\CostumerLogin_Wfm.FrmAddEditCust.resources
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Release\CostumerLogin_Wfm.FrmPassword.resources
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Release\CostumerLogin_Wfm.FrmTop.resources
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Release\CostumerLogin_Wfm.Properties.Resources.resources
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Release\CostumerLogin_Wfm.csproj.GenerateResource.Cache
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Release\CostumerLogin_Wfm.exe
+C:\Users\anzij\Source\Repos\CustomerAdministration\CostumerLogin_Wfm\obj\Release\CostumerLogin_Wfm.pdb

@@ -15,7 +15,7 @@ namespace UnitTestsProjectLib
     public class UnitTestCustomer
     {
         #region Membervariables
-        public static string pathTestDataFile = @"ListCustomerTest.csv"; //path must be changed at the customer class for tests
+        public static string pathTestDataFile = @"ListCustomer.csv"; //path must be changed at the customer class for tests
         #endregion
 
         #region Test cases
@@ -189,11 +189,11 @@ namespace UnitTestsProjectLib
         }
 
         /// <summary>
-        /// Test for several Methods
+        /// Test for several member methods for manipulating the customer data
         /// </summary>
-        public static void MethodsTest()
+        public static void MemberMethodsTest()
         {
-            Console.WriteLine("\n\nTEST: Test of several Methods: check yourself\n\nPrevious:");
+            Console.WriteLine("\n\nTEST: Test of several member methods: check yourself (1. add money, 2. withdraw money, 3. change Email, 4. change last name)\n\nPrevious:");
             List<Customer> list = Customer.LoadListOfAllCustomers();
             PrintList(list);
             if (list.Count >= 4)
@@ -225,6 +225,20 @@ namespace UnitTestsProjectLib
             {
                 Console.WriteLine("ERROR: Too less examples in list");
             }
+        }
+
+        public static void StaticMethodsTest()
+        {
+            Console.WriteLine("\n\nTEST: Test of static methods which are not tested in other cases before: check yourself\n");
+
+            Console.WriteLine("Look for customers with customer number 100001: RESULT: {0}\n", Customer.GetCustomerWithNumber(100001).ToString());
+
+            Console.WriteLine("Look for customers who include an \"A\" in their names:");
+
+            List<Customer> list = Customer.ReturnListOfCustomerWhichIncludeStringInNames("A");
+
+            PrintList(list);
+
         }
         #endregion
 
