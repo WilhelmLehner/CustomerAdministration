@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectLib;
+using System.IO;
 
 namespace CostumerLogin_Wfm
 {
@@ -16,10 +17,13 @@ namespace CostumerLogin_Wfm
     /// </summary>
     public partial class FrmAddEditCust : Form      
     {
-        #region static variables
+        #region Variables
+        private static string pathCSVFile = @"Language.csv";
         private Customer aCustomer;
         private Customer currCustomer;
+        private bool isAddMode;
         private bool customerChange;
+        private string defLanguage = "English";
         #endregion 
 
         #region Cunstructor
@@ -36,8 +40,9 @@ namespace CostumerLogin_Wfm
             this.tbxFirstName.Text = this.currCustomer.FirstName.ToString();    //Loading the first name, last name and email address of the selected customer into the respective text boxes
             this.tbxLastName.Text = this.currCustomer.LastName.ToString();
             this.tbxEmailAddress.Text = this.currCustomer.EmailAddress.ToString();
-            this.btnCreateCustomer.Text = "Edit"; 
+            isAddMode = false;
             this.customerChange = true; //Boolean variable for switching between the modes adding and editing
+            ReadLanguageFromCSV();
         }
 
         /// <summary>
@@ -48,6 +53,8 @@ namespace CostumerLogin_Wfm
         {
             InitializeComponent();
             this.customerChange = false;
+            ReadLanguageFromCSV();
+            isAddMode = true;
         }
         #endregion
 
@@ -106,6 +113,101 @@ namespace CostumerLogin_Wfm
                 MessageBox.Show(ex.Message, "Fehlermeldung", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #endregion 
+
+        /// <summary>
+        /// Recognizes change in the Combo Box, changes the language of the labels and saves the actual language in the CSV-file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmbLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChangeLanguage(this.cmbLanguage.SelectedItem.ToString());
+            WriteLanguageToCSV(this.cmbLanguage.SelectedItem.ToString());
+        }
+        #endregion
+
+
+        /// <summary>
+        /// Methods for saving the selected Language of the Add and Edit window
+        /// </summary>
+        /// <param name="selectedLanguage"></param>
+        #region Private member methods
+        private void WriteLanguageToCSV(string selectedLanguage)
+        {
+            StreamWriter writer = new StreamWriter(pathCSVFile);
+
+            writer.Write(selectedLanguage);
+
+            writer.Close();
+        }
+
+
+        /// <summary>
+        /// Reads the last used language out of an CSV file or sets a default language when first used
+        /// </summary>
+        private void ReadLanguageFromCSV()
+        {
+            try
+            {
+                string selectedLanguage;
+                StreamReader reader = new StreamReader(pathCSVFile);    //Reads out the last used language and changes the labels to this language. 
+                selectedLanguage = reader.ReadLine();
+                ChangeLanguage(selectedLanguage.ToString());
+
+                reader.Close();
+            }
+            catch (FileNotFoundException)            //If program is first used and no CSV file has been generated before 
+            {                                       //Try-Catch catches the FileNotFoundException and a new CSV file is generated. 
+                WriteLanguageToCSV(defLanguage);    //The default language is set to "English" 
+            }
+
+        }
+
+
+        /// <summary>
+        /// Changes the language in the different labels 
+        /// </summary>
+        /// <param name="selectedLanguage"></param>
+        private void ChangeLanguage(string selectedLanguage)
+        {
+
+            if (selectedLanguage == "German")
+            {
+                this.lblFirstName.Text = "Vorname:";
+                this.lblLastName.Text = "Nachname:";
+                this.lblLanguage.Text = "Sprache:";
+
+                if (isAddMode) this.btnCreateCustomer.Text = "Erzeugen";
+                else this.btnCreateCustomer.Text = "Ändern";
+            }
+            else if (selectedLanguage == "English")
+            {
+                this.lblFirstName.Text = "First name:";
+                this.lblLastName.Text = "Last name:";
+                this.lblLanguage.Text = "Language:";
+
+                if (isAddMode) this.btnCreateCustomer.Text = "Create";
+                else this.btnCreateCustomer.Text = "Edit";        
+            }
+            else if (selectedLanguage == "Spanish")
+            {
+                this.lblFirstName.Text = "Nombre:";
+                this.lblLastName.Text = "Apellido:";
+                this.lblLanguage.Text = "Idioma:";
+
+                if (isAddMode) this.btnCreateCustomer.Text = "Crear";
+                else this.btnCreateCustomer.Text = "Modificacion";
+            }
+            else if (selectedLanguage == "Norwegian")
+            {
+                this.lblFirstName.Text = "Fornavn:";
+                this.lblLastName.Text = "Etternavn:";
+                this.lblLanguage.Text = "Språk:";
+
+                if (isAddMode) this.btnCreateCustomer.Text = "Skape";
+                else this.btnCreateCustomer.Text = "Endre";
+            }
+        }
+        #endregion
     }
 }
